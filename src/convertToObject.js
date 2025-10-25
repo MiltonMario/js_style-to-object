@@ -11,7 +11,7 @@ function convertToObject(sourceString) {
     .map((item) => item.replace('\n', '').trim())
     .filter((item) => item.includes(':'));
 
-  const result = source.reduce((acc, word) => {
+  const sourceFinal = source.reduce((acc, word) => {
     const parts = word.split(':');
     const key = parts[0].trim();
     const value = parts[1].trim();
@@ -21,7 +21,7 @@ function convertToObject(sourceString) {
     return acc;
   }, {});
 
-  return result;
+  return sourceFinal;
 }
 
 module.exports = convertToObject;
