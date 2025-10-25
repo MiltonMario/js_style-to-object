@@ -6,20 +6,20 @@
  * @return {object}
  */
 function convertToObject(sourceString) {
-  const result = {};
-
   const source = sourceString
     .split(';')
     .map((item) => item.replace('\n', '').trim())
     .filter((item) => item.includes(':'));
 
-  for (const word of source) {
+  const result = source.reduce((acc, word) => {
     const parts = word.split(':');
-    const chave = parts[0].trim();
-    const valor = parts[1].trim();
+    const key = parts[0].trim();
+    const value = parts[1].trim();
 
-    result[chave] = valor;
-  }
+    acc[key] = value;
+
+    return acc;
+  }, {});
 
   return result;
 }
